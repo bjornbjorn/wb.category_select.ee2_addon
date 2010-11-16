@@ -180,6 +180,7 @@ class Wb_category_select_ft extends EE_Fieldtype {
 			$category_group_name = $category_group_name[0]['group_name'];
 			
 			// Get Categories based on Category Group
+			$this->EE->db->order_by('cat_order');
 			$categories = $this->EE->db->select('cat_id, cat_name')->get_where('categories', array("site_id" => $site_id, "group_id" => $category_group_id));
 			$options_inner = array();
 			foreach ($categories->result_array() as $index => $category) {
